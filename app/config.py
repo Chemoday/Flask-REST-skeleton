@@ -1,4 +1,5 @@
 import os
+import peewee
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
@@ -13,10 +14,10 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    DATABASE = {
-        'name': 'test.db',
-        'engine': 'peewee.SqliteDatabase'
-    }
+
+    DATABASE_INFO = 'test.db'
+    DATABASE = peewee.SqliteDatabase(DATABASE_INFO)
+
 
 class TestingConfig(Config):
     TESTING = True
@@ -25,6 +26,10 @@ class TestingConfig(Config):
         'name': 'test.db',
         'engine': 'peewee.SqliteDatabase'
     }
+
+    @property
+    def database_type(self):
+        return peewee.SqliteDatabase('test.db')
 
 class ProductionConfig(Config):
     TESTING = True
