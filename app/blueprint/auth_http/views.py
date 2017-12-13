@@ -1,4 +1,5 @@
 from flask import request, abort, jsonify, url_for
+from flask_httpauth import HTTPBasicAuth
 from . import auth_api
 
 from flask import  Response

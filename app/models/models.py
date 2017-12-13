@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
+from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
 from peewee import *
 
-from app import db
 
 
 
@@ -16,12 +16,16 @@ class User(BaseModel):
 
 
 
+    serializer = Serializer()
+
+
+
     def hash_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     @property
     def password(self):
-        raise AttributeErr or('password is not a readable attribute')
+        raise AttributeError or('password is not a readable attribute')
 
     @password.setter
     def password(self, password):
