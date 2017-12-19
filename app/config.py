@@ -6,6 +6,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
 
     POSTS_PER_PAGE = 10
+    TOKEN_LIFETIME = 600
 
     @staticmethod
     def init_app(app):
