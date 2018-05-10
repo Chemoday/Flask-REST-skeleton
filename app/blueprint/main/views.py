@@ -9,7 +9,7 @@ from app.models.models import User
 def index():
     form = NameForm()
     if form.validate_on_submit():
-        User.create()
+        User.create(username=form.name.data)
         return url_for('.index')
     return render_template('index.html', form=form)
 
