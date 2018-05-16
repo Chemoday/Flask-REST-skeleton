@@ -54,3 +54,5 @@ def verify_password(username_or_token, password):
 def request_user():
     user = g.user
     return jsonify(model_to_dict(user, exclude=[User.password_hash]))
+
+

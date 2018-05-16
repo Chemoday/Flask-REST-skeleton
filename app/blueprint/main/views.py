@@ -4,6 +4,7 @@ from flask import render_template, session, \
 from . import main_bp
 from .forms import NameForm
 from app.models.models import User
+from app import db
 
 @main_bp.route('/', methods=['GET', 'POST'])
 def index():
